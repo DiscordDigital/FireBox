@@ -50,7 +50,9 @@ exit /b
 
 :create_profile_container
 echo --- FireBox Profile Setup ---
+:set_password2
 for /f %%f in ('powershell -File getpwd.ps1') do set vcpass=%%f
+if "%vcpass%"=="" goto set_password2
 %veracryptformat% /create %boxname%.hc /hash sha512 /encryption AES(Twofish(Serpent)) /filesystem NTFS /size %boxsize% /force /password %vcpass%
 echo Created %boxname%.hc
 exit /b
