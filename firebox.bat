@@ -18,7 +18,6 @@ if not exist %firefox% call :MissingBinary firefox.exe
 if not exist %boxname%.hc call :create_profile_container
 if not exist %boxdrive%:\ call :mount_profile_container
 if not exist %boxdrive%:\firefox call :create_firefox_profile
-if "%1"=="dismount" goto dismount_box
 echo Launching Firefox... Your data will be encrypted once you close firefox.
 %firefox% -profile %boxdrive%:\firefox
 %veracrypt% /q /d %boxdrive%
@@ -55,7 +54,6 @@ for /f %%f in ('powershell -File getpwd.ps1') do set vcpass=%%f
 %veracryptformat% /create %boxname%.hc /hash sha512 /encryption AES(Twofish(Serpent)) /filesystem NTFS /size %boxsize% /force /password %vcpass%
 echo Created %boxname%.hc
 exit /b
-
 
 :MissingBinary
 echo FireBox can't find %*
