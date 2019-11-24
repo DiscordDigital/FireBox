@@ -16,12 +16,12 @@ Feel free to adjust any variables in the file before running it.
 Such as boxsize which is set to 3000M by default, basically 3 GB
 
 ### Variables and what they mean
-boxsize: The size of the VeraCrypt container, size it to your needs.  
-boxdrive: The drive letter used in the container, if z is used already, you need to change it.  
-boxname: What the VeraCrypt container will be named in the filesystem. Change if you run multiple FireBox instances.  
-veracrypt: The path to the VeraCrypt binary.  
-veracryptformat: The path to the VeraCrypt format binary.  
-firefox: The path to the Firefox binary.  
+**boxsize**: The size of the VeraCrypt container, size it to your needs.  
+**boxdrive**: The drive letter used in the container, if z is used already, you need to change it.  
+**boxname**: What the VeraCrypt container will be named in the filesystem. Change if you run multiple FireBox instances.  
+**veracrypt**: The path to the VeraCrypt binary.  
+**veracryptformat**: The path to the VeraCrypt format binary.  
+**firefox**: The path to the Firefox binary.  
 
 You may need to change paths if you want to use it on a portable USB stick.
 The paths may also differ on 32 bit systems.
