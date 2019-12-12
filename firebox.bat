@@ -32,7 +32,7 @@ ping localhost -n 5 > nul
 goto :eof
 
 :createpwd
-echo $password = Read-Host "Enter password" -AsSecureString > getpwd.ps1
+echo $password = Read-Host "Enter new password" -AsSecureString > getpwd.ps1
 echo $password = [Runtime.InteropServices.Marshal]::SecureStringToBSTR($password) >> getpwd.ps1
 echo $password = [Runtime.InteropServices.Marshal]::PtrToStringAuto($password) >> getpwd.ps1
 echo echo $password >> getpwd.ps1
