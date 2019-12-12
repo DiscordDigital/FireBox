@@ -18,9 +18,15 @@ if not exist %firefox% call :MissingBinary firefox.exe
 if not exist %boxname%.hc call :create_profile_container
 if not exist %boxdrive%:\ call :mount_profile_container
 if not exist %boxdrive%:\firefox call :create_firefox_profile
-echo Launching Firefox... Your data will be encrypted once you close firefox.
+echo Launching Firefox...
 %firefox% -profile %boxdrive%:\firefox
+echo.
+echo To encrypt your firefox instance please close the firefox window,
+echo then press any key to continue.
+pause > nul
+if not exist %boxdrive%: goto :boxalreadyunmounted
 %veracrypt% /q /d %boxdrive%
+:closewait
 echo Done! This window will close in 5 seconds
 ping localhost -n 5 > nul
 exit
@@ -56,6 +62,12 @@ if "%vcpass%"=="" goto set_password2
 %veracryptformat% /create %boxname%.hc /hash sha512 /encryption AES(Twofish(Serpent)) /filesystem NTFS /size %boxsize% /force /password %vcpass%
 echo Created %boxname%.hc
 exit /b
+
+:boxalreadyunmounted
+echo.
+echo The profile is already unmounted.
+echo.
+goto closewait
 
 :MissingBinary
 echo FireBox can't find %*
