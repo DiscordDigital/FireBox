@@ -29,7 +29,7 @@ if not exist %boxdrive%: goto :boxalreadyunmounted
 :closewait
 echo Done! This window will close in 5 seconds
 ping localhost -n 5 > nul
-exit
+goto :eof
 
 :createpwd
 echo $password = Read-Host "Enter password" -AsSecureString > getpwd.ps1
@@ -47,7 +47,6 @@ echo Mounting %boxname%..
 :set_password
 if "%vcpass%"=="" for /f %%f in ('powershell -File getpwd.ps1') do set vcpass=%%f
 if "%vcpass%"=="" goto set_password
-cls
 echo Decrypting information please wait..
 %veracrypt% /v %boxname%.hc /l %boxdrive% /a /p %vcpass% /b /q /silent
 if not exist %boxdrive%:\ echo Did you enter a wrong password?& goto set_password
