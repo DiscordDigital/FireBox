@@ -11,7 +11,7 @@ set veracrypt="C:\Program Files\VeraCrypt\VeraCrypt.exe"
 set veracryptformat="C:\Program Files\VeraCrypt\VeraCrypt Format.exe"
 set firefox="C:\Program Files\Mozilla Firefox\firefox.exe"
 echo --- FireBox %version% ---
-if not exist getpwd.ps1 call :createpwd
+call :createpwd
 if not exist %veracrypt% call :MissingBinary VeraCrypt.exe
 if not exist %veracryptformat% call :MissingBinary VeraCrypt Format.exe
 if not exist %firefox% call :MissingBinary firefox.exe
@@ -32,7 +32,7 @@ ping localhost -n 5 > nul
 goto :eof
 
 :createpwd
-echo $password = Read-Host "Enter new password" -AsSecureString > getpwd.ps1
+echo $password = Read-Host "Enter password" -AsSecureString > getpwd.ps1
 echo $password = [Runtime.InteropServices.Marshal]::SecureStringToBSTR($password) >> getpwd.ps1
 echo $password = [Runtime.InteropServices.Marshal]::PtrToStringAuto($password) >> getpwd.ps1
 echo echo $password >> getpwd.ps1
@@ -56,7 +56,8 @@ exit /b
 :create_profile_container
 echo --- FireBox Profile Setup ---
 :set_password2
-for /f %%f in ('powershell -File getpwd.ps1') do set vcpass=%%f
+echo Please define a new password. (Will be visible)
+set /p vcpass=^> 
 if "%vcpass%"=="" goto set_password2
 %veracryptformat% /create %boxname%.hc /hash sha512 /encryption AES(Twofish(Serpent)) /filesystem NTFS /size %boxsize% /force /password %vcpass%
 echo Created %boxname%.hc
