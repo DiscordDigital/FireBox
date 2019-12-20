@@ -45,7 +45,7 @@ exit /b
 :mount_profile_container
 echo Mounting %boxname%..
 :set_password
-if "%vcpass%"=="" for /f %%f in ('powershell -File getpwd.ps1') do set vcpass=%%f
+for /f %%f in ('powershell -File getpwd.ps1') do set vcpass=%%f
 if "%vcpass%"=="" goto set_password
 echo Decrypting information please wait..
 %veracrypt% /v %boxname%.hc /l %boxdrive% /a /p %vcpass% /b /q /silent
