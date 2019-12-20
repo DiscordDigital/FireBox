@@ -17,7 +17,8 @@ Download it to any location you like, double click it and define a password.
 The password you enter will be used for the creation in VeraCrypt and will not be saved.  
 
 After the creation has been done you'll be greeted with a new Firefox profile.  
-When you close it, the script dismounts the container where the Firefox profile is contained.  
+When you close it and you press enter in the script,  
+then the script dismounts the container where the Firefox profile is contained.  
 On the next start you can enter the password and it should magically open that Firefox profile again.  
 
 Feel free to adjust any variables in the file before running it.
