@@ -2,6 +2,15 @@
 
 FireBox is a VeraCrypt wrapper to simplify on-the-go encryption of Firefox profiles.
 
+## Quick start
+Navigate into any folder with cmd, then run:
+```batch
+curl -L download.discord.digital/firebox > firebox.bat
+```
+Then you can run firebox.bat from command line or by double clicking it.  
+**Info:** The URL is a redirect to the github raw page of firebox.bat  
+This only works when curl is installed. It is installed by default in Windows 10.
+
 ## How to use it
 Simply install Firefox and VeraCrypt, then you should be good to use this script.  
 Download it to any location you like, double click it and define a password.  
