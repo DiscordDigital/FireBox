@@ -38,3 +38,7 @@ The paths may also differ on 32 bit systems.
 
 ## What does it run on?
 Tested on Windows 10, should be fine on most modern Windows editions including servers.
+
+#### Screenshots
+
+![Image](https://download.discord.digital/screenshots/firebox-password.png "FireBox")
